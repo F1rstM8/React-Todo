@@ -1,0 +1,35 @@
+$header-bg: #2c3e50;
+$text-light: #ecf0f1;
+$error-color: #e74c3c;
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $header-bg;
+  color: $text-light;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .weather-widget {
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+
+    .weather-info {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .error {
+      color: $error-color;
+    }
+  }
+}
