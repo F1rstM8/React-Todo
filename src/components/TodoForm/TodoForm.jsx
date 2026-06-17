@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import classNames from 'classnames';
 import './TodoForm.scss';
+import { todoValidationSchema } from '../../utils/validation';
 
 const validationSchema = Yup.object().shape({
   value: Yup.string()
