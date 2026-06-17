@@ -7,7 +7,9 @@ import './TodoForm.scss';
 
 const validationSchema = Yup.object().shape({
   value: Yup.string()
+    .trim() 
     .min(3, 'Мінімум 3 символи')
+    .max(150, 'Максимум 150 символів')
     .required('Обов\'язкове поле! Введіть назву задачі.'),
   deadline: Yup.date().nullable(), 
 });
@@ -17,14 +19,19 @@ const TodoForm = () => {
 
   return (
     <div className="todo-form-container">
-   
       <Formik
         initialValues={{ value: '', deadline: '' }}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           
-          dispatch(addTodo(values));
-         
+          
+          const cleanValues = {
+            ...values,
+            value: values.value.trim(),
+          };
+          
+          dispatch(addTodo(cleanValues));
+          
           resetForm();
         }}
       >

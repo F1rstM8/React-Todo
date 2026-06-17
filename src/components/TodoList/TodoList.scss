@@ -1,4 +1,3 @@
-
 .todo-list {
   list-style: none;
   padding: 0;
@@ -32,6 +31,16 @@
       display: flex;
       align-items: center;
       gap: 1rem;
+      /* Додаємо обмеження для флекс-контейнера */
+      flex: 1; 
+      min-width: 0; 
+
+      .todo-text {
+        /* Примусово розриваємо дуже довгі слова */
+        overflow-wrap: break-word; 
+        word-break: break-word;
+        flex: 1; /* Щоб текст коректно переносився всередині блоку */
+      }
     }
 
     .delete-btn {
@@ -39,6 +48,8 @@
       border: none;
       cursor: pointer;
       font-size: 1.2rem;
+      margin-left: 1rem; /* Відступ, щоб текст не прилипав впритул до кнопки */
+      flex-shrink: 0; /* Забороняємо кнопці звужуватися */
     }
   }
 }
