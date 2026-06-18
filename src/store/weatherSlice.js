@@ -32,15 +32,18 @@ const weatherSlice = createSlice({
     builder
       .addCase(fetchWeather.pending, (state) => {
         state.isLoading = true;
+
         state.error = null;
       })
       .addCase(fetchWeather.fulfilled, (state, action) => {
         state.isLoading = false;
         state.data = action.payload;
+        state.error = null;
       })
       .addCase(fetchWeather.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+        state.data = null;
       });
   },
 });
