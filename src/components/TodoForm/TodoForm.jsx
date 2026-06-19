@@ -1,19 +1,9 @@
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../store/todoSlice";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import { todoValidationSchema } from "../../utils/validation.js"; 
 import classNames from "classnames";
 import "./TodoForm.scss";
-import { todoValidationSchema } from "../../utils/validation";
-
-const validationSchema = Yup.object().shape({
-  value: Yup.string()
-    .trim()
-    .min(3, "Мінімум 3 символи")
-    .max(150, "Максимум 150 символів")
-    .required("Обов'язкове поле! Введіть назву задачі."),
-  deadline: Yup.date().nullable(),
-});
 
 const TodoForm = () => {
   const dispatch = useDispatch();
@@ -22,7 +12,7 @@ const TodoForm = () => {
     <div className="todo-form-container">
       <Formik
         initialValues={{ value: "", deadline: "" }}
-        validationSchema={validationSchema}
+        validationSchema={todoValidationSchema} 
         onSubmit={(values, { resetForm }) => {
           const cleanValues = {
             ...values,
